@@ -25,6 +25,7 @@ namespace Employee.DAL.Employee
                 emp.Name = reader["Name"].ToString();
                 emp.DateBirth = (DateTime)reader["DateBirth"];
                 emp.Gender = (Boolean)reader["Gender"];
+                emp.PlaceBirth = reader["PlaceBirth"].ToString();
                 emp.idDepartment = reader["idDepartment"].ToString();
                 lstEmp.Add(emp);
             }

@@ -25,7 +25,7 @@ namespace Employee
             List<EmployeeDTO> lstEmp = empBLL.ReadEmployee();
             foreach (EmployeeDTO item in lstEmp)
             {
-                dataGvEmp.Rows.Add(item.idEmployee, item.Name, item.PlaceBirth, item.Gender,item.PlaceBirth,item.idDepartment);
+                dataGvEmp.Rows.Add(item.idEmployee, item.Name, item.DateBirth, item.Gender,item.PlaceBirth,item.idDepartment);
             }
         }
 
@@ -35,7 +35,7 @@ namespace Employee
             txtId.Text = dataGvEmp.Rows[idx].Cells[0].Value.ToString();
             txtName.Text = dataGvEmp.Rows[idx].Cells[1].Value.ToString();
             dtDate.Value = (DateTime)dataGvEmp.Rows[idx].Cells[2].Value;
-            cbGender.Checked = (Boolean) dataGvEmp.Rows[idx].Cells[3].Value;
+            cbGender.Checked = (Boolean)dataGvEmp.Rows[idx].Cells[3].Value;
             txtPlace.Text = dataGvEmp.Rows[idx].Cells[4].Value.ToString();
             comboUnit.Text = dataGvEmp.Rows[idx].Cells[5].Value.ToString();
         }
