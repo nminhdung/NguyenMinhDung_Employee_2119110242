@@ -68,9 +68,11 @@ namespace Employee
 
                 empBLL.AddEmployee(emp);
                 dataGvEmp.Rows.Add(emp.idEmployee, emp.Name, emp.DateBirth, emp.Gender, emp.PlaceBirth, emp.idDepartment);
+                //Trả về txt trống
                 txtId.Text = "";
                 txtName.Text = "";
                 txtPlace.Text = "";
+                
             }
             
         }
