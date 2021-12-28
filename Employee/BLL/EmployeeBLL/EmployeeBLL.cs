@@ -18,7 +18,7 @@ namespace Employee.BLL.EmployeeBLL
         }
         public void AddEmployee(EmployeeDTO emp)
         {
-           
+            dal.AddEmployee(emp);
         }
     }
 }
