@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using Employee.DTO.EmployeeDTO;
+using Employee.DTO.DepartmentDTO;
 
 namespace Employee.DAL.Employee
 {
@@ -25,11 +26,31 @@ namespace Employee.DAL.Employee
                 emp.Name = reader["Name"].ToString();
                 emp.DateBirth = (DateTime)reader["DateBirth"];
                 emp.Gender = (Boolean)reader["Gender"];
+                emp.PlaceBirth = reader["PlaceBirth"].ToString();
                 emp.idDepartment = reader["idDepartment"].ToString();
                 lstEmp.Add(emp);
             }
             connect.Close();
             return lstEmp;
+        }
+
+        
+
+        public void AddEmployee(EmployeeDTO emp)
+        {
+            SqlConnection connect = CreateConnection();
+            connect.Open();
+
+            SqlCommand cmd = new SqlCommand("addEmployee @idEmployee,@Name,@DateBirth,@Gender,@PlaceBirth,@idDepartment", connect);
+            cmd.Parameters.Add(new SqlParameter("@idEmployee", emp.idEmployee));
+            cmd.Parameters.Add(new SqlParameter("@Name", emp.Name));
+            cmd.Parameters.Add(new SqlParameter("@DateBirth", emp.DateBirth));
+            cmd.Parameters.Add(new SqlParameter("@Gender", emp.Gender));
+            cmd.Parameters.Add(new SqlParameter("@PlaceBirth", emp.PlaceBirth));
+            cmd.Parameters.Add(new SqlParameter("@idDepartment", emp.idDepartment));
+
+            cmd.ExecuteNonQuery();
+            connect.Close();
         }
     }
 }
