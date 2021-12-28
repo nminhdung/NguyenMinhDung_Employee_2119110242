@@ -52,16 +52,29 @@ namespace Employee
         private void btnAdd_Click(object sender, EventArgs e)
         {
             EmployeeDTO emp = new EmployeeDTO();
-            
-            emp.idEmployee = txtId.Text;
-            emp.Name = txtName.Text;
-            emp.DateBirth = dtDate.Value;
-            emp.Gender = cbGender.Checked;
-            emp.PlaceBirth = txtPlace.Text;
-            emp.idDepartment = comboUnit.Text;
 
-            empBLL.AddEmployee(emp);
-            dataGvEmp.Rows.Add(emp.idEmployee, emp.Name, emp.DateBirth, emp.Gender, emp.PlaceBirth, emp.idDepartment);
+            if (txtId.Text == "" || txtName.Text == "" || txtPlace.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                emp.idEmployee = txtId.Text;
+                emp.Name = txtName.Text;
+                emp.DateBirth = dtDate.Value;
+                emp.Gender = cbGender.Checked;
+                emp.PlaceBirth = txtPlace.Text;
+                emp.idDepartment = comboUnit.Text;
+
+                empBLL.AddEmployee(emp);
+                dataGvEmp.Rows.Add(emp.idEmployee, emp.Name, emp.DateBirth, emp.Gender, emp.PlaceBirth, emp.idDepartment);
+                //Trả về txt trống
+                txtId.Text = "";
+                txtName.Text = "";
+                txtPlace.Text = "";
+                
+            }
+            
         }
     }
     
