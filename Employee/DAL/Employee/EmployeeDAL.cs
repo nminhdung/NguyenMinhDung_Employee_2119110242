@@ -19,6 +19,7 @@ namespace Employee.DAL.Employee
             SqlCommand cmd = new SqlCommand("getAllEmployees", connect);
             SqlDataReader reader = cmd.ExecuteReader();
             List<EmployeeDTO> lstEmp = new List<EmployeeDTO>();
+            DepartmentDTO depart = new DepartmentDTO();
             while (reader.Read())
             {
                 EmployeeDTO emp = new EmployeeDTO();
@@ -33,9 +34,7 @@ namespace Employee.DAL.Employee
             connect.Close();
             return lstEmp;
         }
-
-        
-
+  
         public void AddEmployee(EmployeeDTO emp)
         {
             SqlConnection connect = CreateConnection();
