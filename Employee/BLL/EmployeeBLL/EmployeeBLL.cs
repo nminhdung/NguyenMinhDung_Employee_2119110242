@@ -24,5 +24,9 @@ namespace Employee.BLL.EmployeeBLL
         {
             dal.DeleteEmployee(emp);
         }
+        public void EditEmployee(EmployeeDTO emp)
+        {
+            dal.EditEmployee(emp);
+        }
     }
 }

@@ -59,5 +59,19 @@ namespace Employee.DAL.Employee
             cmd.ExecuteNonQuery();
             connect.Close();
         }
+        public void EditEmployee(EmployeeDTO emp)
+        {
+            SqlConnection connect = CreateConnection();
+            connect.Open();
+            SqlCommand cmd = new SqlCommand("editEmployee @idEmployee,@Name,@DateBirth,@Gender,@PlaceBirth,@idDepartment", connect);
+            cmd.Parameters.Add(new SqlParameter("@idEmployee", emp.idEmployee));
+            cmd.Parameters.Add(new SqlParameter("@Name", emp.Name));
+            cmd.Parameters.Add(new SqlParameter("@DateBirth", emp.DateBirth));
+            cmd.Parameters.Add(new SqlParameter("@Gender", emp.Gender));
+            cmd.Parameters.Add(new SqlParameter("@PlaceBirth", emp.PlaceBirth));
+            cmd.Parameters.Add(new SqlParameter("@idDepartment", emp.idDepartment));
+            cmd.ExecuteNonQuery();
+            connect.Close();
+        }
     }
 }
