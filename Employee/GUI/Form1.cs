@@ -93,7 +93,7 @@ namespace Employee
 
             dataGvEmp.Rows.RemoveAt(idx);
         }
-
+        //Sửa
         private void btnEdit_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dataGvEmp.CurrentRow;
@@ -113,6 +113,15 @@ namespace Employee
                 row.Cells[3].Value = emp.Gender;
                 row.Cells[4].Value = emp.PlaceBirth;
                 row.Cells[5].Value = emp.Depart.Name;
+            }
+        }
+        //Thoát app
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
             }
         }
     }
