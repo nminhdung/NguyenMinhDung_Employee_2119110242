@@ -237,6 +237,7 @@ namespace Employee
             this.btnEdit.TabIndex = 14;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnExit
             // 
