@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using Employee.DTO.EmployeeDTO;
+
+
+using Employee.DTO.DepartmentDTO;
+
 using Employee.DAL.Department;
 
 namespace Employee.DAL.Employee
@@ -28,12 +32,21 @@ namespace Employee.DAL.Employee
                 emp.DateBirth = (DateTime)reader["DateBirth"];
                 emp.Gender = (Boolean)reader["Gender"];
                 emp.PlaceBirth = reader["PlaceBirth"].ToString();
+
+
                 emp.Depart = departDAL.readDepartment(reader["idDepartment"].ToString());
+
                 lstEmp.Add(emp);
             }
             connect.Close();
             return lstEmp;
         }
+
+
+
+        
+
+
         public void AddEmployee(EmployeeDTO emp)
         {
             SqlConnection connect = CreateConnection();
@@ -50,6 +63,7 @@ namespace Employee.DAL.Employee
             cmd.ExecuteNonQuery();
             connect.Close();
         }
+
         public void DeleteEmployee(EmployeeDTO emp)
         {
             SqlConnection connect = CreateConnection();
@@ -59,5 +73,6 @@ namespace Employee.DAL.Employee
             cmd.ExecuteNonQuery();
             connect.Close();
         }
+
     }
 }

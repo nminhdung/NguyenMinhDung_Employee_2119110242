@@ -20,6 +20,7 @@ namespace Employee.BLL.EmployeeBLL
         {
             dal.AddEmployee(emp);
         }
+
         public void DeleteEmployee(EmployeeDTO emp)
         {
             dal.DeleteEmployee(emp);

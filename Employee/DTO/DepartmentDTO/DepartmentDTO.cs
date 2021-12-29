@@ -10,5 +10,6 @@ namespace Employee.DTO.DepartmentDTO
     {
         public string idDepartment { get; set; }
         public string Name { get; set; }
+        public List<EmployeeDTO.EmployeeDTO> Employees { get; set; }
     }
 }
