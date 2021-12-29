@@ -32,7 +32,7 @@ namespace Employee
                 dataGvEmp.Rows.Add(item.idEmployee, item.Name, item.DateBirth, item.Gender, item.PlaceBirth, item.idDepartment);
             }
             List<DepartmentDTO> lstDepart = departBLL.readDepartList();
-            foreach (DepartmentDTO item in lstDepart)
+            foreach (DepartmentDTO item in lstDepart){
 
                 dataGvEmp.Rows.Add(item.idEmployee, item.Name, item.DateBirth, item.Gender,item.PlaceBirth,item.Depart.Name);
             }
