@@ -88,7 +88,7 @@ namespace Employee
             int idx = dataGvEmp.CurrentCell.RowIndex;
             dataGvEmp.Rows.RemoveAt(idx);
         }
-
+        //Sửa
         private void btnEdit_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dataGvEmp.CurrentRow;
