@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Employee.DTO.EmployeeDTO;
 using Employee.DTO.DepartmentDTO;
+using Employee.DAL.Department;
 
 namespace Employee.DAL.Employee
 {
@@ -19,7 +20,6 @@ namespace Employee.DAL.Employee
             SqlCommand cmd = new SqlCommand("getAllEmployees", connect);
             SqlDataReader reader = cmd.ExecuteReader();
             List<EmployeeDTO> lstEmp = new List<EmployeeDTO>();
-            DepartmentDTO depart = new DepartmentDTO();
             while (reader.Read())
             {
                 EmployeeDTO emp = new EmployeeDTO();
@@ -28,13 +28,15 @@ namespace Employee.DAL.Employee
                 emp.DateBirth = (DateTime)reader["DateBirth"];
                 emp.Gender = (Boolean)reader["Gender"];
                 emp.PlaceBirth = reader["PlaceBirth"].ToString();
-                emp.idDepartment = reader["idDepartment"].ToString();
+                emp.Depart = depart.readDepartment(reader["idDepartment"].ToString());
                 lstEmp.Add(emp);
             }
             connect.Close();
             return lstEmp;
         }
-  
+
+        
+
         public void AddEmployee(EmployeeDTO emp)
         {
             SqlConnection connect = CreateConnection();
@@ -46,7 +48,7 @@ namespace Employee.DAL.Employee
             cmd.Parameters.Add(new SqlParameter("@DateBirth", emp.DateBirth));
             cmd.Parameters.Add(new SqlParameter("@Gender", emp.Gender));
             cmd.Parameters.Add(new SqlParameter("@PlaceBirth", emp.PlaceBirth));
-            cmd.Parameters.Add(new SqlParameter("@idDepartment", emp.idDepartment));
+            cmd.Parameters.Add(new SqlParameter("@idDepartment", emp.Depart.idDepartment));
 
             cmd.ExecuteNonQuery();
             connect.Close();
