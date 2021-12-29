@@ -34,7 +34,7 @@ namespace Employee
             List<DepartmentDTO> lstDepart = departBLL.readDepartList();
             foreach (DepartmentDTO item in lstDepart){
 
-                dataGvEmp.Rows.Add(item.idEmployee, item.Name, item.DateBirth, item.Gender,item.PlaceBirth,item.Depart.Name);
+                comboUnit.Items.Add(item);
             }
           
             comboUnit.DisplayMember = "idDepartment";
