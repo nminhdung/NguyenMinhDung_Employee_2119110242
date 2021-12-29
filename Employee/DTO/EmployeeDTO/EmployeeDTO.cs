@@ -13,7 +13,10 @@ namespace Employee.DTO.EmployeeDTO
         public DateTime DateBirth { get; set; }
         public Boolean Gender { get; set; }
         public string PlaceBirth { get; set; }
+
         public DepartmentDTO.DepartmentDTO Depart {get;set;}
+
+
         public string idDepartment { get { return Depart.Name; } }
     }
 }
