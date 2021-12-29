@@ -17,4 +17,4 @@ namespace Employee.BLL.DepartmentBLL
             return lstDepart;
         }
     }
-
+}
