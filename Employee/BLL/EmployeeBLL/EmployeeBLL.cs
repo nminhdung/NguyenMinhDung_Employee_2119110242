@@ -16,5 +16,13 @@ namespace Employee.BLL.EmployeeBLL
             List<EmployeeDTO> lstEmp = dal.ReadEmployee();
             return lstEmp;
         }
+        public void AddEmployee(EmployeeDTO emp)
+        {
+            dal.AddEmployee(emp);
+        }
+        public void DeleteEmployee(EmployeeDTO emp)
+        {
+            dal.DeleteEmployee(emp);
+        }
     }
 }
