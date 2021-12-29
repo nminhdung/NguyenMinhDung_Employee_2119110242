@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using Employee.DTO.EmployeeDTO;
+
+
 using Employee.DTO.DepartmentDTO;
+
 using Employee.DAL.Department;
 
 namespace Employee.DAL.Employee
@@ -20,6 +23,7 @@ namespace Employee.DAL.Employee
             SqlCommand cmd = new SqlCommand("getAllEmployees", connect);
             SqlDataReader reader = cmd.ExecuteReader();
             List<EmployeeDTO> lstEmp = new List<EmployeeDTO>();
+            DepartmentDAL departDAL = new DepartmentDAL();
             while (reader.Read())
             {
                 EmployeeDTO emp = new EmployeeDTO();
@@ -28,14 +32,20 @@ namespace Employee.DAL.Employee
                 emp.DateBirth = (DateTime)reader["DateBirth"];
                 emp.Gender = (Boolean)reader["Gender"];
                 emp.PlaceBirth = reader["PlaceBirth"].ToString();
-                emp.Depart = depart.readDepartment(reader["idDepartment"].ToString());
+
+
+                emp.Depart = departDAL.readDepartment(reader["idDepartment"].ToString());
+
                 lstEmp.Add(emp);
             }
             connect.Close();
             return lstEmp;
         }
 
+
+
         
+
 
         public void AddEmployee(EmployeeDTO emp)
         {
@@ -53,5 +63,16 @@ namespace Employee.DAL.Employee
             cmd.ExecuteNonQuery();
             connect.Close();
         }
+
+        public void DeleteEmployee(EmployeeDTO emp)
+        {
+            SqlConnection connect = CreateConnection();
+            connect.Open();
+            SqlCommand cmd = new SqlCommand("deleteEmployee @idEmployee", connect);
+            cmd.Parameters.Add(new SqlParameter("@idEmployee", emp.idEmployee));
+            cmd.ExecuteNonQuery();
+            connect.Close();
+        }
+
     }
 }

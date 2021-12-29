@@ -11,7 +11,9 @@ namespace Employee.DAL.Department
 {
     public class DepartmentDAL : DBConnection
     {
-       public List<DepartmentDTO> ReadDepartList()
+
+       public List<DepartmentDTO> ReadDepartList();
+
         {
             SqlConnection connect = CreateConnection();
             connect.Open();
@@ -38,14 +40,26 @@ namespace Employee.DAL.Department
             cmd.Parameters.Add(new SqlParameter("@idDepartment", idDepart));
             SqlDataReader reader = cmd.ExecuteReader();
             DepartmentDTO depart = new DepartmentDTO();
+
+         
+
             if(reader.HasRows && reader.Read())
+
             {
                 depart.idDepartment = reader["idDepartment"].ToString();
                 depart.Name = reader["Name"].ToString();
             }
             connect.Close();
             return depart;
+
+            //abc
         }
 
     }
 }
+
+        }
+
+    }
+}
+
