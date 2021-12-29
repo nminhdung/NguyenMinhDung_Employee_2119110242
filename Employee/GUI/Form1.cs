@@ -28,13 +28,15 @@ namespace Employee
             List<EmployeeDTO> lstEmp = empBLL.ReadEmployee();
             foreach (EmployeeDTO item in lstEmp)
             {
+
                 dataGvEmp.Rows.Add(item.idEmployee, item.Name, item.DateBirth, item.Gender, item.PlaceBirth, item.idDepartment);
             }
             List<DepartmentDTO> lstDepart = departBLL.readDepartList();
-            foreach (DepartmentDTO item in lstDepart)
-            {
+            foreach (DepartmentDTO item in lstDepart){
+
                 comboUnit.Items.Add(item);
             }
+          
             comboUnit.DisplayMember = "idDepartment";
         }
 
@@ -51,6 +53,7 @@ namespace Employee
                 txtPlace.Text = dataGvEmp.Rows[idx].Cells[4].Value.ToString();
                 comboUnit.Text = dataGvEmp.Rows[idx].Cells[5].Value.ToString();
             }
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -69,13 +72,14 @@ namespace Employee
                 emp.Gender = cbGender.Checked;
                 emp.PlaceBirth = txtPlace.Text;
                 emp.Depart = (DepartmentDTO)comboUnit.SelectedItem;
-
                 empBLL.AddEmployee(emp);
-                dataGvEmp.Rows.Add(emp.idEmployee, emp.Name, emp.DateBirth, emp.Gender, emp.PlaceBirth, emp.Depart.Name);
+                dataGvEmp.Rows.Add(emp.idEmployee, emp.Name, emp.DateBirth, emp.Gender, emp.PlaceBirth, emp.idDepartment);
+
                 //Trả về txt trống
                 txtId.Text = "";
                 txtName.Text = "";
                 txtPlace.Text = "";
+
             }
         }
 
@@ -86,6 +90,7 @@ namespace Employee
             emp.Name = txtName.Text;
             empBLL.DeleteEmployee(emp);
             int idx = dataGvEmp.CurrentCell.RowIndex;
+
             dataGvEmp.Rows.RemoveAt(idx);
         }
 
@@ -111,4 +116,5 @@ namespace Employee
             }
         }
     }
+
 }
