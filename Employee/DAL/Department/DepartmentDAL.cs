@@ -12,7 +12,7 @@ namespace Employee.DAL.Department
     public class DepartmentDAL : DBConnection
     {
 
-       public List<DepartmentDTO> ReadDepartList();
+       public List<DepartmentDTO> ReadDepartList()
 
         {
             SqlConnection connect = CreateConnection();
@@ -58,5 +58,4 @@ namespace Employee.DAL.Department
     }
 }
 
-     
 

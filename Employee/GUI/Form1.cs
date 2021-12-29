@@ -115,7 +115,7 @@ namespace Employee
                 row.Cells[5].Value = emp.Depart.Name;
             }
         }
-
+        //Thoát app
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
