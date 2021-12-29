@@ -92,6 +92,5 @@ namespace Employee
             int idx = dataGvEmp.CurrentCell.RowIndex;
             dataGvEmp.Rows.RemoveAt(idx);        
             }    
-        }
-    }
+       }
 }
